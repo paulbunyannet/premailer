@@ -1,0 +1,31 @@
+{
+  "name": "paulbunyannet/premailer",
+  "description": "Css inliner for HTML emails",
+  "keywords": [
+    "toolkit"
+  ],
+  "authors": [
+    {
+      "name": "Nate Nolting",
+      "email": "me@natenolting.com"
+    }
+  ],
+  "require": {
+    "php": "5.4 - 7.0",
+    "fzaninotto/faker": "^1.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pbc\\Premailer\\": "src/Premailer/"
+    }
+  },
+  "minimum-stability": "stable",
+  "scripts": {
+    "test": [
+      "phpunit --verbose"
+    ]
+  }
+}

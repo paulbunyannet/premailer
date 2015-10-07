@@ -1,0 +1,21 @@
+language: php
+php:
+- 5.4
+- 5.5
+- 5.6
+- 7.0
+- hhvm
+matrix:
+  allow_failures:
+  - php: hhvm
+before_install:
+- composer self-update
+install: composer install --prefer-source --no-interaction --dev
+script: composer test
+cache:
+  directories:
+  - vendor
+  - $HOME/.composer/cache
+notifications:
+  slack:
+    secure: mf0wIwl9cxaWm6d3pXwU2xl6GNDs+zfBcMdHrpyEAzs6pVhuY8jBV6pFOi4iXqYD5/ojSBhyxhkoZ3KX+rVn5BBoxQJpr/ihXrQ8ricxwl6H15/qBm0ui4jJbYZlonh374oWs5ZyV2d/Sq4GOr+x7Oev8CvwMil39jwoq09/vIWprEcmUuNuCKp6/I5x2bDoz2eG1Di5ReEsVchLMP9zZOUZ9y5md9xqeTKM3PKFrlLHRd4JaO9DaYvR07T48Z59dBneJLBUI3VPb2lyO3RIy8EPLyUhdocbOMxTFgZ0WQEl0kTmHsNyePpx0pvh0Qa83CpSnOroZs1fLOroFGfxdn72IHGOO15/6aSzkxfgv3/+Hgu2XPakSbs3Pb2ab5LND4SqApIqMkQn11KwIl9JYgdN47ntX3I1vqn1dXQODk+kSjvgRjyEPr4w6IBlgxlb6sTKiKJn5kWWq3RX10cLq9xwvgtsKw94FAxC348Y/J4rp9h2Qe38YBllpzGh+uG74NzVu/1rOjc1ljpSTcyK9nKGxWeUDWT6qHkd0s/AiImr/JHaVhiZNYPZ3kQJx/9uOgm6mfkGuBuYXSkNp0sS4dhPuJtxyc4+epf7wD1qOXuZu2K9DKJj85U/jKP+9rq7mGZIdcjb/M9f4/GrFQ9j0JfFXTs1fxGo2d/Au0+zlHM=
