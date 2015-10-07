@@ -17,11 +17,15 @@ To inline css for a html email from a string:
 
     $html = '<html>
             <head>
-                <style>.paragraph {font-size: 12px;}</style>
+                <style>
+                    .paragraph {
+                        font-size: 12px;
+                    }
+                </style>
             </head>
-            <body><p class="paragraph">
-            Lorem ipsum dolor sit amet, ne sea sumo laudem. Iracundia concludaturque no pro. Ex tempor praesent eos, ea dicta consetetur ius, eligendi posidonium referrentur cum no. Nulla dissentiet vel et, mei at sumo numquam, pro iriure constituam voluptatibus te. Affert fabulas impedit nec an, aeterno partiendo voluptaria duo ne.
-            </p></body>
+            <body>
+                <p class="paragraph">Lorem ipsum dolor sit amet, ne sea sumo laudem. Iracundia concludaturque no pro. Ex tempor praesent eos, ea dicta consetetur ius, eligendi posidonium referrentur cum no. Nulla dissentiet vel et, mei at sumo numquam, pro iriure constituam voluptatibus te. Affert fabulas impedit nec an, aeterno partiendo voluptaria duo ne.</p>
+            </body>
          </html>';
          
     $inlined = Premailer::html($html);         
