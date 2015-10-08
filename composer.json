@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Pbc\\Premailer\\": "src/"
+      "Pbc\\": "src/"
     }
   },
   "minimum-stability": "stable",

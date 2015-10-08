@@ -10,7 +10,7 @@
  * @subpackage Subpackage
  */
 
-namespace Pbc\Premailer;
+namespace Pbc;
 
 
 class PremailerTest extends \PHPUnit_Framework_TestCase

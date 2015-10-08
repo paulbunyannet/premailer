@@ -1,5 +1,5 @@
 <?php
-namespace Pbc\Premailer;
+namespace Pbc;
 /**
  * Premailer API PHP class
  * Premailer is a library/service for making HTML more palatable for various inept email clients, in particular GMail
