@@ -37,7 +37,7 @@ class PremailerTest extends \PHPUnit_Framework_TestCase
         $htmlOut = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" \"http://www.w3.org/TR/REC-html40/loose.dtd\">\n<html>\n<head><style>.paragraph {".$css."}</style></head>\n<body>\n<p class=\"paragraph\" style=\"". $css ."\">".$paragraph."</p>\n</body>\n</html>";
 
         $premailer = new Premailer();
-        $premailed = $premailer->html($htmlIn);
+        $premailed = $premailer::html($htmlIn);
         $this->assertArrayHasKey('html', $premailed, 'response from premailer has key html');
         $this->assertEquals(trim($htmlOut), trim($premailed['html']));
     }

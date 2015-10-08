@@ -6,6 +6,10 @@
   ],
   "authors": [
     {
+      "name": "Marcus Bointon",
+      "email": "marcus@synchromedia.co.uk"
+    },
+    {
       "name": "Nate Nolting",
       "email": "me@natenolting.com"
     }
@@ -19,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Pbc\\Premailer\\": "src/Premailer/"
+      "Pbc\\Premailer\\": "src/"
     }
   },
   "minimum-stability": "stable",
