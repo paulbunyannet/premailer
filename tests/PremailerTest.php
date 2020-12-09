@@ -13,26 +13,18 @@
 namespace Pbc;
 
 
-class PremailerTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class PremailerTest extends TestCase
 {
 
     protected $htmlUrl = 'http://www.quackit.com/html/templates/download/preview.cfm?template=/html/templates/layout_templates/2_column_left_menu.cfm';
-
-
-    public function setUp()
-    {
-    }
-
-    public function tearDown()
-    {
-
-    }
 
     public function testPremailerFromHtmlReturnsHtml()
     {
         $faker = \Faker\Factory::create();
         $paragraph = $faker->paragraph;
-        $css  = 'font-weight: 700; font-size: 12px;';
+        $css  = 'font-size: 12px; font-weight: 700;';
         $htmlIn = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" \"http://www.w3.org/TR/REC-html40/loose.dtd\">\n<html>\n<head><style>.paragraph {".$css."}</style></head>\n<body>\n<p class=\"paragraph\">".$paragraph."</p>\n</body>\n</html>";
         $htmlOut = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" \"http://www.w3.org/TR/REC-html40/loose.dtd\">\n<html>\n<head><style>.paragraph {".$css."}</style></head>\n<body>\n<p class=\"paragraph\" style=\"". $css ."\">".$paragraph."</p>\n</body>\n</html>";
 
