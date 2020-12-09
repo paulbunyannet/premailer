@@ -8,7 +8,7 @@ namespace Pbc;
  * @link http://premailer.dialect.ca/api
  * @author Marcus Bointon <marcus@synchromedia.co.uk>
  */
-
+ 
 class Premailer {
 	/**
 	 * The Premailer API URL
@@ -31,6 +31,7 @@ class Premailer {
 	 * @param bool $remove_classes Remove classes from the HTML document?
 	 * @param bool $remove_comments Remove comments from the HTML document?
 	 * @return array
+	 * @throws Exception
 	 * @throws \Exception @codeCoverageIgnore
 	 */
 	protected static function convert($html = '', $url = '', $fetchresult = true, $adaptor = 'hpricot', $base_url = '', $line_length = 65, $link_query_string = '', $preserve_styles = true, $remove_ids = false, $remove_classes = false, $remove_comments = false) {
@@ -40,7 +41,7 @@ class Premailer {
 		} elseif (!empty($url)) {
 			$params['url'] = $url;
 		} else {
-			throw new \Exception('Must supply an html or url value');
+			throw new Exception('Must supply an html or url value');
 		}
 		if ($adaptor == 'hpricot' or $adaptor == 'nokigiri') {
 			$params['adaptor'] = $adaptor;
@@ -63,8 +64,8 @@ class Premailer {
 			'ssl' => array('verifypeer' => false, 'verifyhost' => false)
 		);
 	//	$h = new HttpRequest(self::ENDPOINT, HttpRequest::METH_POST, $options);
-
-
+		
+	
 		$conf = array(
 				'url'	=> self::ENDPOINT,
 				'timeout' => 15,
@@ -76,7 +77,7 @@ class Premailer {
 				'returntransfer' => true,
 				'httpheader' => array("Expect:")
 			);
-
+		
 		foreach($conf as $key => $value){
 			$name = constant('CURLOPT_'.strtoupper($key));
 			$val  = $value;
@@ -84,7 +85,7 @@ class Premailer {
 		}
 		$cu = curl_init();
 		curl_setopt_array($cu, $data_conf);
-		$exec = curl_exec($cu);
+		$exec = curl_exec($cu);	
 		$_res			= json_decode($exec);
 		$_res_info 	= json_decode(json_encode(curl_getinfo($cu)));
 		curl_close($cu);
@@ -101,7 +102,7 @@ class Premailer {
 				default:
 					throw new \Exception('Error', $code);
 			}
-
+			
 		}
 		$return = array('result' => $_res);
 		if ($fetchresult) {
@@ -119,7 +120,7 @@ class Premailer {
 				);
 			$return['html'] = curl_exec($html);
 			curl_close($html);
-
+			
 			$plain = curl_init();
 			curl_setopt_array(
 					$plain, array(
@@ -134,16 +135,17 @@ class Premailer {
 				);
 			$return['plain'] = curl_exec($plain);
 			curl_close($plain);
-
+		
 			return $return;
 		}
 		return false;
-
+		
 	}
-
+ 
 	/**
 	 * Central static method for submitting either an HTML string or a URL, optionally retrieving converted versions
 	 * @static
+	 * @throws Exception
 	 * @param string $html Raw HTML source
 	 * @param bool $fetchresult Whether to also fetch the converted output
 	 * @param string $adaptor Which document handler to use (hpricot (default) or nokigiri)
@@ -159,10 +161,11 @@ class Premailer {
 	public static function html($html, $fetchresult = true, $adaptor = 'hpricot', $base_url = '', $line_length = 65, $link_query_string = '', $preserve_styles = true, $remove_ids = false, $remove_classes = false, $remove_comments = false) {
 		return self::convert($html, '', $fetchresult, $adaptor, $base_url, $line_length, $link_query_string, $preserve_styles, $remove_ids, $remove_classes, $remove_comments);
 	}
-
+ 
 	/**
 	 * Central static method for submitting either an HTML string or a URL, optionally retrieving converted versions
 	 * @static
+	 * @throws Exception
 	 * @param string $url URL of the source file
 	 * @param bool $fetchresult Whether to also fetch the converted output
 	 * @param string $adaptor Which document handler to use (hpricot (default) or nokigiri)
@@ -179,7 +182,7 @@ class Premailer {
 		return self::convert('', $url, $fetchresult, $adaptor, $base_url, $line_length, $link_query_string, $preserve_styles, $remove_ids, $remove_classes, $remove_comments);
 	}
 }
-
+ 
 /*
 Simplest usage:
 $pre = Premailer::html($var_with_some_html_in);

@@ -13,12 +13,20 @@
 namespace Pbc;
 
 
-use PHPUnit\Framework\TestCase;
-
-class PremailerTest extends TestCase
+class PremailerTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $htmlUrl = 'http://www.quackit.com/html/templates/download/preview.cfm?template=/html/templates/layout_templates/2_column_left_menu.cfm';
+
+
+    public function setUp()
+    {
+    }
+
+    public function tearDown()
+    {
+
+    }
 
     public function testPremailerFromHtmlReturnsHtml()
     {
