@@ -42,6 +42,7 @@ class Premailer {
 	    $cssToInlineStyles = new CssToInlineStyles($html);
         $cssToInlineStyles->setUseInlineStylesBlock(true);
         $cssToInlineStyles->setStripOriginalStyleTags(!$preserve_styles);
+        $cssToInlineStyles->setCleanup($remove_ids || $remove_classes || $remove_comments);
         $converted = $cssToInlineStyles->convert();
 
         $cssToInlineStyles = new CssToInlineStyles($html);
