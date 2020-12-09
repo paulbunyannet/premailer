@@ -51,7 +51,6 @@ class Premailer {
         $plain = $cssToInlineStyles->convert();
 
         return [
-            'result' => $converted,
             'html' => $converted,
             'plain' => wordwrap(strip_tags($plain), $line_length)
         ];
