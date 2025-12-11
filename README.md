@@ -1,3 +1,5 @@
+## Project moved to https://gitlab.pbndev.net/web-open/premailer 
+
 # premailer
 Inline CSS for use in html emails, uses Dialect Preflight API
 
